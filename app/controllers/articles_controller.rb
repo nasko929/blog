@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 	def show
     	@article = Article.find(params[:id])
   	end
-	
+	SEGA RABOTI BRAT
 	def destroy
 	  @article = Article.find(params[:id])
 	  @article.destroy
