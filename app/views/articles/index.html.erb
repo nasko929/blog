@@ -1,0 +1,25 @@
+
+<center><h1>Вижте ми артикълите :)</h1></center>
+<center><%= link_to 'Нова статия', new_article_path %></center>
+
+<table>
+  <tr>
+    <th>Заглавие</th>
+    <!--<th>Text</th>-->
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <!--<td><%= article.text %></td>-->
+      <td><%= link_to 'Покажи', article_path(article) %></td>
+      <td>|</td>
+      <td><%= link_to 'Промени', edit_article_path(article) %></td>
+      <td>|</td>
+      <td><%= link_to 'Премахни', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
