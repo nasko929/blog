@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
 	def create  
 		@article = Article.new(params.require(:article).permit(:title, :text))
 	 	if @article.save
-	  		redirect_to @article
+	  		redirect_to action: 'index'
 	  	else
 	  		render 'new'
 	  	end
