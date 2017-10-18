@@ -1,4 +1,8 @@
-
+<%- if user_signed_in? %>
+	<div align:"right">Welcome, <%= current_user[:email] %> </div>
+<%- else %>
+	<div align:"right">You want to log in?</div>
+<% end -%>
 <center><h1>Здравейте, жури!</h1></center>
 <hr>
 <center><%= link_to 'Регистрирайте се!', new_user_registration_path %></center>
