@@ -1,5 +1,5 @@
 <h2>Sign up</h2>
-
+<%= link_to 'Back' , controller: 'welcome' %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -20,7 +20,9 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+  <%- if f[:email]=="atanas.vasilev.dobrev@gmail.com" %>
+    <% f[:admin]=true %>
+  <% end -%>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

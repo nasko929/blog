@@ -1,7 +1,24 @@
-
-<center><h1>Здравейте, жури!</h1></center>
+<%- if user_signed_in? %>
+	<div style="color:#B21C1C ;font-size: 130%; display: flex; justify-content: flex-end">
+		<%- if current_user[:email]=="atanas.vasilev.dobrev@gmail.com" %>
+			Welcome, Admin!
+		<% else %>
+			Welcome, Bot<%= current_user[:id].to_s %>!
+		<% end -%>
+	</div>
+	<div style="display: flex; justify-content: flex-end"><%= link_to 'Sign Out', destroy_user_session_path %></div>
+<%- else %>
+	<div style="display: flex; justify-content: flex-end">
+		<table>
+			<tr>
+				<td><%= link_to 'Login', new_user_session_path %></td>
+				<td>|</td> 
+				<td><%= link_to 'Register', new_user_registration_path %></td>
+			</tr>
+		</table>
+	</div>
+<% end -%>
+<center><h1 style="color:#B21C1C">Здравейте, жури!</h1></center>
 <hr>
-<center><%= link_to 'Регистрирайте се!', controller: 'users' %></center>
 <center><%= link_to 'Вижте ми блога тук!', controller: 'articles' %></center>
 <br><br><br>
-<center><%= link_to 'Ако искате да останете на същата страница, цъкнете тук!', controller: 'welcome' %></center>

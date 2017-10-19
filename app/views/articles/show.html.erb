@@ -23,11 +23,13 @@
     <!--<strong>Comment:</strong>-->
     <%= comment.body %>
   </p>
-  <p>
-	  <%= link_to 'Изтрий коментара', [comment.article, comment],
-	               method: :delete,
-	               data: { confirm: 'Сигурен ли си?' } %>
- </p>
+  <%- if user_signed_in? && current_user[:email]=="atanas.vasilev.dobrev@gmail.com" %>
+    <p>
+  	  <%= link_to 'Изтрий коментара', [comment.article, comment],
+  	               method: :delete,
+  	               data: { confirm: 'Сигурен ли си?' } %>
+   </p>
+  <% end -%>
   <hr>
 <% end %>
 
@@ -46,5 +48,7 @@
   </p>
 <% end %>
  
-<%= link_to 'Промени', edit_article_path(@article) %> |
+<%- if user_signed_in? && current_user[:email]=="atanas.vasilev.dobrev@gmail.com" %>
+    <%= link_to 'Промени артикъла', edit_article_path(@article) %> |
+<% end -%>
 <%= link_to 'Назад', articles_path %>
