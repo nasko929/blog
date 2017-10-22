@@ -3,7 +3,7 @@
 		<%- if current_user[:is_admin]==true %>
 			Welcome, Admin!
 		<% else %>
-			Welcome, Bot<%= current_user[:id] %>!
+			Welcome, <%= current_user[:first_name] %> <%= current_user[:last_name] %>!
 		<% end -%>
 	</div>
 	<div style="display: flex; justify-content: flex-end"><%= link_to 'Sign Out', destroy_user_session_path %></div>
@@ -20,5 +20,5 @@
 <% end -%>
 <center><h1 style="color:#B21C1C">Добре дошли в блога на Наско!</h1></center>
 <hr>
-<center><%= link_to 'Вижте ми блога тук!', controller: 'articles' %></center>
+<center><%= link_to 'Вижте блога тук!', controller: 'articles' %></center>
 <br><br><br>
