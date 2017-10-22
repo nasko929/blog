@@ -4,28 +4,15 @@ class ArticlesController < ApplicationController
 	end
 	def index
 	    @articles = Article.all
-	    if user_signed_in? and current_user[:is_admin]==true
-	    	@admin=true
-	    else
-	    	@admin=false
-	    end
+	    @admin = (user_signed_in? and current_user[:is_admin]==true)
 	end
 	def edit
 		@article = Article.find(params[:id])
 	end
 	def show
     	@article = Article.find(params[:id])
-    	if user_signed_in? and current_user[:is_admin]==true
-	    	@admin=true
-	    	@signed=true
-	    else
-	    	@admin=false
-	    	if user_signed_in?
-	    		@signed=true
-	    	else
-	    		@signed=false
-	    	end
-	    end
+    	@admin = (user_signed_in? and current_user[:is_admin]==true)
+    	@signed = user_signed_in?
   	end
 	def destroy
 	  @article = Article.find(params[:id])
