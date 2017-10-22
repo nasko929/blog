@@ -4,14 +4,16 @@ class ArticlesController < ApplicationController
 	end
 	def index
 	    @articles = Article.all
+	    @admin = (user_signed_in? and current_user[:is_admin]==true)
 	end
 	def edit
 		@article = Article.find(params[:id])
 	end
 	def show
     	@article = Article.find(params[:id])
+    	@admin = (user_signed_in? and current_user[:is_admin]==true)
+    	@signed = user_signed_in?
   	end
-	
 	def destroy
 	  @article = Article.find(params[:id])
 	  @article.destroy

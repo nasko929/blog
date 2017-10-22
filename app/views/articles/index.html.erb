@@ -1,6 +1,6 @@
 
-<center><h1>Вижте ми артикълите :)</h1></center>
-<%- if user_signed_in? && current_user[:email]=="atanas.vasilev.dobrev@gmail.com" %>
+<center><h1>Вижте ми статиите :)</h1></center>
+<%- if @admin %>
   <center><%= link_to 'Нова статия', new_article_path %></center>
 <% end -%>
 
@@ -15,7 +15,7 @@
       <td><%= article.title %></td>
       <!--<td><%= article.text %></td>-->
       <td><%= link_to 'Покажи', article_path(article) %></td>
-      <%- if user_signed_in? && current_user[:email]=="atanas.vasilev.dobrev@gmail.com" %>
+      <%- if @admin %>
         <td>|</td>
         <td><%= link_to 'Промени', edit_article_path(article) %></td>
         <td>|</td>
