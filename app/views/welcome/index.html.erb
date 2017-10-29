@@ -1,14 +1,14 @@
 <%- if user_signed_in? %>
-	<div style="color:#B21C1C ;font-size: 130%; display: flex; justify-content: flex-end">
+	<div class="greeting textprompt">
 		<%- if current_user[:is_admin]==true %>
 			Welcome, Admin!
 		<% else %>
 			Welcome, <%= current_user[:first_name] %> <%= current_user[:last_name] %>!
 		<% end -%>
 	</div>
-	<div style="display: flex; justify-content: flex-end"><%= link_to 'Sign Out', destroy_user_session_path %></div>
+	<div class="greeting"><%= link_to 'Sign Out', destroy_user_session_path %></div>
 <%- else %>
-	<div style="display: flex; justify-content: flex-end">
+	<div class="greeting">
 		<table>
 			<tr>
 				<td><%= link_to 'Sign in', new_user_session_path %></td>
