@@ -8,8 +8,8 @@
 	</div>
 	<div class="greeting"><%= link_to 'Sign Out', destroy_user_session_path %></div>
 <% else %>
-	<div class="greeting">
-		<table>
+	<div>
+		<table class="table greeting">
 			<tr>
 				<td><%= link_to 'Sign in', new_user_session_path %></td>
 				<td>|</td> 
