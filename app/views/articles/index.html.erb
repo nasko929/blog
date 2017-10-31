@@ -4,7 +4,8 @@
 <center><table>
     <tr>
       <% if @admin %>
-        <th colspan="5"><center>Заглавие<hr></center></th>
+        <th><center>Заглавие<hr></center></th>
+        <th colspan="6"><center>Дейност<hr></center></th>
       <% else %>
         <th><center>Заглавие<hr></center></th>
       <% end %>
@@ -15,7 +16,9 @@
       <%- if @admin %>
         <td></td>
         <td><%= link_to 'Промени', edit_article_path(article) %></td>
-        <td>|</td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td><%= link_to 'Премахни', article_path(article),
                 method: :delete,
                 data: { confirm: 'Are you sure?' } %></td>
