@@ -7,7 +7,7 @@
 <p>
   <!--<strong>Text:</strong>-->
   <font size = 5>
-  	<center><%= @article.text %></center>
+  	<center><%= simple_format(@article.text) %></center>
   </font>
 </p>
   
@@ -15,11 +15,9 @@
  <hr>
 <% @article.comments.each do |comment| %>
   <p>
-    <!--<strong>Commenter:</strong>-->
     <font size = 5><strong><%= comment.commenter %> каза:</strong></font> 
   
-    <!--<strong>Comment:</strong>-->
-    <%= comment.body %>
+    <%= simple_format(comment.body) %>
   </p>
   <%- if @admin or (@signed and comment.commenter==current_user[:username] ) %>
     <p>
@@ -37,20 +35,21 @@
     <p>
       <%= form.label :Коментар %><br>
       <%= form.text_area :body %>
-    </p> 
+    </p>
     <p>
       <%= form.submit %>
     </p>
   <% end %>
 <% else %>
-  <h4>
+  <h6>
     Ако искате да оставите коментар, моля влезте в <%= link_to 'профила си', new_user_session_path %>
     или <%= link_to 'създайте нов', new_user_registration_path %>!
-  </h4>
+  </h6>
   <br>  
 <% end -%>
  
 <%- if @admin %>
     <%= link_to 'Промени статията', edit_article_path(@article) %> |
 <% end -%>
-<%= link_to 'Назад', articles_path %>
+<br><br>
+<center><%= link_to 'Назад', articles_path %></center>
