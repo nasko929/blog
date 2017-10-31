@@ -1,24 +1,24 @@
 
 <center><h1>Вижте ми статиите :)</h1></center>
-<%- if @admin %>
-  <center><%= link_to 'Нова статия', new_article_path %></center>
-<% end -%>
-
+<br><br>
 <center><table>
-    <th>Заглавие<hr></th>
-    <!--<th>Text</th>-->
-    <th colspan="3"></th>
-  </tr>
-  
+    <tr>
+      <% if @admin %>
+        <th><center>Заглавие<hr></center></th>
+        <th colspan="6"><center>Дейност<hr></center></th>
+      <% else %>
+        <th><center>Заглавие<hr></center></th>
+      <% end %>
+    </tr>
   <% @articles.each do |article| %>
     <tr>
-      <td><%= article.title %></td>
-      <!--<td><%= article.text %></td>-->
-      <td><%= link_to 'Покажи', article_path(article) %></td>
+      <td><center><%= link_to article.title, article_path(article) %></center></td>
       <%- if @admin %>
-        <td>|</td>
+        <td></td>
         <td><%= link_to 'Промени', edit_article_path(article) %></td>
-        <td>|</td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td><%= link_to 'Премахни', article_path(article),
                 method: :delete,
                 data: { confirm: 'Are you sure?' } %></td>
@@ -27,4 +27,8 @@
   <% end %>
 </table></center>
 <br><br><br>
-<center><%= link_to 'Back' , controller: 'welcome' %></center>
+<%- if @admin %>
+  <center><%= link_to 'Нова статия', new_article_path %></center>
+<% end -%>
+<br>
+<center><%= link_to 'Назад' , controller: 'welcome' %></center>
