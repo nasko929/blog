@@ -10,46 +10,47 @@
   	<center><%= simple_format(@article.text) %></center>
   </font>
 </p>
-  
- <h2>Коментари</h2>
- <hr>
-<% @article.comments.each do |comment| %>
-  <p>
-    <font size = 5><strong><%= comment.commenter %> каза:</strong></font> 
-  
-    <%= simple_format(comment.body) %>
-  </p>
-  <%- if @admin or (@signed and comment.commenter==current_user[:username] ) %>
-    <p>
-  	  <%= link_to 'Изтрий коментара', [comment.article, comment],
-  	               method: :delete,
-  	               data: { confirm: 'Сигурен ли си?' } %>
-   </p>
-  <% end -%>
+<div class="commentf">
+  <h2>Коментари</h2>
   <hr>
-<% end %>
-<%- if @signed %>
-  <h2>Добави коментар:</h2>
-  <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
-    <%= form.hidden_field :commenter,value: current_user[:username] %>
+  <% @article.comments.each do |comment| %>
     <p>
-      <%= form.label :Коментар %><br>
-      <%= form.text_area :body %>
+      <font size = 5><strong><%= comment.commenter %> каза:</strong></font> 
+    
+      <%= simple_format(comment.body) %>
     </p>
-    <p>
-      <%= form.submit %>
-    </p>
+    <%- if @admin or (@signed and comment.commenter==current_user[:username] ) %>
+      <p>
+    	  <%= link_to 'Изтрий коментара', [comment.article, comment],
+    	               method: :delete,
+    	               data: { confirm: 'Сигурен ли си?' } %>
+     </p>
+    <% end -%>
+    <hr>
   <% end %>
-<% else %>
-  <h6>
-    Ако искате да оставите коментар, моля влезте в <%= link_to 'профила си', new_user_session_path %>
-    или <%= link_to 'създайте нов', new_user_registration_path %>!
-  </h6>
-  <br>  
-<% end -%>
- 
-<%- if @admin %>
-    <%= link_to 'Промени статията', edit_article_path(@article) %>
-<% end -%>
+  <%- if @signed %>
+    <h2>Добави коментар:</h2>
+    <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+      <%= form.hidden_field :commenter,value: current_user[:username] %>
+      <p>
+        <%= form.label :Коментар %><br>
+        <%= form.text_area :body %>
+      </p>
+      <p>
+        <%= form.submit 'Коментирай', class: "btn btn-info" %>
+      </p>
+    <% end %>
+  <% else %>
+    <h6>
+      Ако искате да оставите коментар, моля влезте в <%= link_to 'профила си', new_user_session_path %>
+      или <%= link_to 'създайте нов', new_user_registration_path %>!
+    </h6>
+    <br>  
+  <% end -%>
+   
+  <%- if @admin %>
+      <%= link_to 'Промени статията', edit_article_path(@article), class: "btn btn-warning" %>
+  <% end -%>
+<div>
 <br><br>
-<center><%= link_to 'Назад', articles_path %></center>
+<center><%= link_to 'Назад', articles_path, :class => "btn btn-back btn-sm" %></center>

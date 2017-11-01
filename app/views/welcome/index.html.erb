@@ -1,24 +1,24 @@
 <% if user_signed_in? %>
 	<div class="greeting textprompt">
 		<%- if current_user[:is_admin]==true %>
-			Welcome, Admin!
+			Здравей, Админ!
 		<% else %>
-			Welcome, <%= current_user[:first_name] %> <%= current_user[:last_name] %>!
+			Здравейте, <%= current_user[:first_name] %> <%= current_user[:last_name] %>!
 		<% end -%>
 	</div>
-	<div class="greeting"><%= link_to 'Sign Out', destroy_user_session_path %></div>
+	<div class="greeting"><%= link_to 'Излез от профила си', destroy_user_session_path, class: "btn btn-info" %></div>
 <% else %>
 	<div>
 		<table class="table greeting">
 			<tr>
-				<td><%= link_to 'Sign in', new_user_session_path %></td>
-				<td>|</td> 
-				<td><%= link_to 'Sign up', new_user_registration_path %></td>
+				<td><%= link_to 'Влез в профила си', new_user_session_path, class: "btn btn-info" %></td>
+				
+				<td><%= link_to 'Регистрирай се', new_user_registration_path, class: "btn btn-info" %></td>
 			</tr>
 		</table>
 	</div>
 <% end %>
 <center><h1 style="color:#B21C1C">Добре дошли в блога на Наско!</h1></center>
 <hr>
-<center><%= link_to 'Вижте блога тук!', controller: 'articles' %></center>
+<center><%= link_to 'Вижте блога тук!', {controller: 'articles', action: 'index' }, class: "btn btn-info" %></center>
 <br><br><br>

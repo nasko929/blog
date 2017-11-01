@@ -13,14 +13,18 @@
     <tbody>
       <% @articles.each do |article| %>
         <tr>
-          <td><center><%= link_to article.title, article_path(article) %></center></td>
+          <td>
+            <center>
+             <%= link_to article.title, article_path(article), :class => "btn btn-link" %>
+            </center>
+          </td>
           <%- if @admin %>
             <td></td>
-            <td><%= link_to 'Промени', edit_article_path(article) %></td>
+            <td><%= link_to 'Промени', edit_article_path(article), :class => "btn btn-warning" %></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><%= link_to 'Премахни', article_path(article),
+            <td><%= link_to 'Премахни', article_path(article), :class => "btn btn-danger",
                     method: :delete,
                     data: { confirm: 'Are you sure?' } %></td>
           <% end -%>
@@ -30,7 +34,7 @@
 </table></center>
 <br><br><br>
 <%- if @admin %>
-  <center><%= link_to 'Нова статия', new_article_path %></center>
+  <center><%= link_to 'Нова статия', new_article_path, class:  "btn btn-info" %></center>
 <% end -%>
 <br>
-<center><%= link_to 'Назад' , controller: 'welcome' %></center>
+<center><%= link_to 'Назад', {controller: 'welcome',action: 'index'}, class: "btn btn-back btn-sm" %></center>
