@@ -1,6 +1,33 @@
-
 <center><h1>Нова статия</h1></center>
+<%= form_with model: @article, local: true do |form| %>
  
-<%= render 'form' %>
+  <center><% if @article.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger" role="alert">
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      
+        <% @article.errors.full_messages.each do |msg| %>
+          <p><%= msg %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %></center>
  
-<center><%= link_to 'Назад', articles_path %></center>
+  <center><p>
+    <strong><%= form.label :Заглавие %></strong><br>
+    <%= form.text_field :title %>
+  </p></center>
+ 
+  <center><p>
+    <strong><%= form.label :Текст %></strong><br>
+    <%= form.text_area :text %>
+  </p></center>
+ 
+  <center><p>
+    <%= form.submit "Създай", :class => "btn btn-info" %>
+  </p></center>
+ 
+<% end %>
+<br><br>
+<center><%= link_to 'Назад', articles_path, :class => "btn btn-back btn-sm" %></center>
