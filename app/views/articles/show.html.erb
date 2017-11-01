@@ -21,7 +21,7 @@
     </p>
     <%- if @admin or (@signed and comment.commenter==current_user[:username] ) %>
       <p>
-    	  <%= link_to 'Изтрий коментара', [comment.article, comment],
+    	  <%= link_to 'Изтрий коментара', [comment.article, comment], class: "btn btn-danger",
     	               method: :delete,
     	               data: { confirm: 'Сигурен ли си?' } %>
      </p>
