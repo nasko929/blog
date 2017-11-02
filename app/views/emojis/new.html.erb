@@ -1,0 +1,16 @@
+<h1 class="em_style">Добавяне на ново emoji</h1>
+<%= form_with model: @emoji, local: true do |form| %>
+	<p class="em_style">
+		<%= form.label "Name:" %><br>
+		<%= form.text_field :name %>
+	</p>
+	<p class="em_style">
+		<%= form.label "url:" %><br>
+		<%= form.text_area :url %>
+	</p>
+	<p class="em_style">
+		<%= form.submit "Създай", class: "btn btn-info" %>
+	</p>
+<% end %>
+<center><%= link_to 'Назад', {controller: 'emojis',action: 'index'}, class: "btn btn-back btn-sm" %>
+</center>
