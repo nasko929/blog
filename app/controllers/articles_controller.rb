@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
     	@article = Article.find(params[:id])
     	@admin = (user_signed_in? and current_user[:is_admin]==true)
     	@signed = user_signed_in?
+    	@emojis = Emoji.all
   	end
 	def destroy
 	  @article = Article.find(params[:id])

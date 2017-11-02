@@ -15,16 +15,16 @@
         <tr>
           <td>
             <center>
-             <em><%= link_to article.title, article_path(article), :class => "btn btn-link" %></em>
+             <em><%= link_to article.title, article_path(article), class: "btn btn-link" %></em>
             </center>
           </td>
           <%- if @admin %>
             <td></td>
-            <td><%= link_to 'Промени', edit_article_path(article), :class => "btn btn-warning" %></td>
+            <td><%= link_to 'Промени', edit_article_path(article), class: "btn btn-warning" %></td>
             <td></td>
             <td></td>
             <td></td>
-            <td><%= link_to 'Премахни', article_path(article), :class => "btn btn-danger",
+            <td><%= link_to 'Премахни', article_path(article), class: "btn btn-danger",
                     method: :delete,
                     data: { confirm: 'Are you sure?' } %></td>
           <% end -%>

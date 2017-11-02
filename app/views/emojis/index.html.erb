@@ -1,0 +1,36 @@
+<h1 style="text-align: center"> Всички еможита: </h1>
+<center><table class="table">
+    <thead class="thead-light">
+      <th><center>Име</center></th>
+      <th><center>Emoji</center></th>
+      <th><center>Промени</center></th>
+      <th><center>Премахни</center></th>
+    </thead>
+    <tbody>
+      <% @emojis.each do |emoji| %>
+        <tr>
+          <td>
+            <center>
+             <%= emoji.name %>
+            </center>
+          </td>
+          <td class="picsize">
+          	<%= image_tag(emoji.url) %>
+          </td>
+          <td style="text-align: center">
+          	<%= link_to 'Промени', edit_emoji_path(emoji), class: "btn btn-warning" %>
+          </td>
+          <td style="text-align:center">
+          	<%= link_to 'Премахни', emoji_path(emoji), class: "btn btn-danger",
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>          
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+</table></center>
+<center>
+	<%= link_to 'Добави ново emoji', new_emoji_path , class: "btn btn-info" %>
+	<br><br><br>
+	<%= link_to 'Назад', {controller: 'welcome',action: 'index'}, class: "btn btn-back btn-sm" %>
+</center>

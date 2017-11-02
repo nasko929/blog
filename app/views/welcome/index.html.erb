@@ -22,3 +22,6 @@
 <hr>
 <center><%= link_to 'Вижте блога тук!', {controller: 'articles', action: 'index' }, class: "btn btn-info" %></center>
 <br><br><br>
+<% if user_signed_in? and current_user[:is_admin]==true %>
+	<center><%= link_to 'Създаване на еможита', {controller: 'emojis', action: 'index' }, class: "btn btn-info" %></center>
+<% end %>
