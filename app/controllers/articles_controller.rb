@@ -38,4 +38,25 @@ class ArticlesController < ApplicationController
 	    	render 'edit'
 	  	end
 	end
+	def process_like
+		if Like.where(user_id: params[:user_id],article_id: params[:article_id]).count == 0
+			Like.create(
+			article_id: params[:article_id],
+			user_id: params[:user_id],
+			emoji_id: params[:emoji_id]
+			)
+		else
+			if Like.where(user_id: params[:user_id],article_id: params[:article_id],emoji_id: params[:emoji_id]).count == 1
+				Like.where(user_id: params[:user_id],article_id: params[:article_id]).delete_all
+			else 
+				Like.where(user_id: params[:user_id],article_id: params[:article_id]).delete_all
+				Like.create(
+				article_id: params[:article_id],
+				user_id: params[:user_id],
+				emoji_id: params[:emoji_id]
+				)
+			end
+		end
+		redirect_to '/articles/' + params[:article_id] 
+	end
 end

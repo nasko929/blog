@@ -7,7 +7,7 @@ class EmojisController < ApplicationController
 	end
 	def edit
 		@emoji = Emoji.find(params[:id])
-
+		redirect_to '/emojis'
 	end
 	def show
 		@emoji = Emoji.find(params[:id])

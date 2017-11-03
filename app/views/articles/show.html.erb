@@ -1,22 +1,30 @@
-  <!--<strong><center>Title:</center></strong><br>-->
-  <font size = 18>
-  	<center><%= @article.title %></center>
-  </font>
-</p>
+<div class="tstyle container-fluid">
+	<h1><%= @article.title %></h1>
+</div>
  
-<p>
-  <!--<strong>Text:</strong>-->
-  <font size = 5>
-  	<center><%= simple_format(@article.text) %></center>
-  </font>
-</p>
+<div class="tstyle container-fluid">
+  <%= simple_format(@article.text) %>
+</div>
 
 
-<div class="container-fluid list_emojis_container">
+<div class="container-fluid list_emojis_container tstyle">
   <div class="row">
     <% @emojis.each do |emoji| %>
       <div class="col col-sm-3 picsize">
-          <%= link_to  image_tag(emoji.url), controller: 'welcome' %>
+          <% if @signed %>
+            <%= link_to  image_tag(emoji.url), reacting_path(
+                {:article_id => @article.id, :user_id => current_user[:id], :emoji_id => emoji.id}), 
+                {'data-toggle' => 'tooltip', :title => emoji.name, :class => 'js-link-tooltip'} %>
+          <% else %>
+            <%= image_tag(emoji.url) %>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <% @emojis.each do |emoji| %>
+      <div class="col col-sm-3">
+        <%= Like.where(emoji_id: emoji.id, article_id: @article.id).count %>
       </div>
     <% end %>
   </div>
@@ -25,7 +33,9 @@
 
 
 <div class="commentf">
-  <h2>Коментари</h2>
+  <div class="tstyle">
+    <h1>Коментари</h1>
+  </div>
   <hr>
   <% @article.comments.each do |comment| %>
     <p>
@@ -43,11 +53,12 @@
     <hr>
   <% end %>
   <%- if @signed %>
-    <h2>Добави коментар:</h2>
+    <div class="tstyle">
+      <h3>Добави коментар:</h2>
+    </div>
     <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
       <%= form.hidden_field :commenter,value: current_user[:username] %>
-      <p>
-        <%= form.label :Коментар %><br>
+      <p class="marpad">
         <%= form.text_area :body %>
       </p>
       <p>
@@ -55,7 +66,7 @@
       </p>
     <% end %>
   <% else %>
-    <h6>
+    <h6 class="tstyle">
       Ако искате да оставите коментар, моля влезте в <%= link_to 'профила си', new_user_session_path %>
       или <%= link_to 'създайте нов', new_user_registration_path %>!
     </h6>
@@ -67,4 +78,10 @@
   <% end -%>
 <div>
 <br><br>
-<center><%= link_to 'Назад', articles_path, :class => "btn btn-back btn-sm" %></center>
+<center><%= link_to 'Назад', articles_path, class: "btn btn-back btn-sm" %></center>
+
+<script>
+  $(document).ready(function() {
+     $('.js-link-tooltip').tooltip();
+   });
+</script>

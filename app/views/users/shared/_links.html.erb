@@ -1,13 +1,19 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Влез в профила си", new_session_path(resource_name), class: "btn btn-info" %><br /><br>
+  <div class="marpad">
+  	<%= link_to "Влез в профила си", new_session_path(resource_name), class: "btn btn-info" %><br />
+  </div>
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Регистрирай се", new_registration_path(resource_name), class: "btn btn-info" %><br /><br>
+  <div class="marpad">
+  	<%= link_to "Регистрирай се", new_registration_path(resource_name), class: "btn btn-info" %><br />
+  </div>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Забравена парола?", new_password_path(resource_name), class: "btn btn-warning" %><br /><br>
+  <div class="marpad">
+  	<%= link_to "Забравена парола?", new_password_path(resource_name), class: "btn btn-warning" %><br />
+  </div>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

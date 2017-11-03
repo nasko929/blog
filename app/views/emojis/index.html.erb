@@ -1,24 +1,23 @@
-<h1 style="text-align: center"> Всички еможита: </h1>
-<center><table class="table">
-    <thead class="thead-light">
+<br><div class="tstyle container-fluid">
+ <h1>Всички емоджита: </h1>
+</div>
+<br>
+<table class="table">
+    <thead class="thead-dark">
       <th><center>Име</center></th>
       <th><center>Emoji</center></th>
-      <th><center>Промени</center></th>
       <th><center>Премахни</center></th>
     </thead>
     <tbody>
       <% @emojis.each do |emoji| %>
         <tr>
           <td>
-            <center>
+            <div class="tstyle container-fluid">
              <%= emoji.name %>
-            </center>
+            </div>
           </td>
           <td class="picsize">
           	<%= image_tag(emoji.url) %>
-          </td>
-          <td style="text-align: center">
-          	<%= link_to 'Промени', edit_emoji_path(emoji), class: "btn btn-warning" %>
           </td>
           <td style="text-align:center">
           	<%= link_to 'Премахни', emoji_path(emoji), class: "btn btn-danger",
@@ -28,7 +27,7 @@
         </tr>
       <% end %>
     </tbody>
-</table></center>
+</table>
 <center>
 	<%= link_to 'Добави ново emoji', new_emoji_path , class: "btn btn-info" %>
 	<br><br><br>

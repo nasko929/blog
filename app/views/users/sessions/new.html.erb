@@ -1,28 +1,26 @@
-<div style="text-align: center">
+<div class="tstyle container-fluid">
   <h2>Влез в профила си</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field_str">
       <%= f.label "E-mail" %><br />
       <%= f.email_field :email, autofocus: true %>
     </div>
-    <br>
     <div class="field_str">
       <%= f.label "Парола" %><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
-    <br>
     <% if devise_mapping.rememberable? -%>
       <div class="field_str">
         <%= f.check_box :remember_me %>
         <%= f.label "Запомни ме" %>
       </div>
     <% end -%>
-    <br>
-    <div class="actions">
-      <%= f.submit "Влез", class: "btn btn-success" %>
+    <div class="actions marpad hand">
+      <%= f.submit "Влез", class: "btn btn-success hand" %>
     </div>
   <% end %>
-  <br>
   <%= render "users/shared/links" %>
-  <%= link_to 'Назад' , welcome_index_path, class: "btn btn-back" %>
+  <div class="marpad">
+    <%= link_to 'Назад' , welcome_index_path, class: "btn btn-back" %>
+  </div>
 </div>
