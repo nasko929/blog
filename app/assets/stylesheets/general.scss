@@ -1,0 +1,22 @@
+body, html 
+{
+	background-image: image-url('coffee_background.jpg');
+	background-size: cover;
+	color: white;
+	background-position: fixed;
+	background-repeat: no-repeat;
+}
+.tstyle
+{
+	font-size: 135%;
+	text-align: center;
+	background: rgba(0,0,0,0.9);
+   	width: fit-content;
+   	padding: 10px 10px;
+}
+.btn-back
+{
+	background-color: green;
+	color: white;
+	margin-bottom: 40px;
+}

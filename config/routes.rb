@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   	resources :comments
   end
 
+  get 'process_like', to: 'articles#process_like', as: :reacting
+
   root 'welcome#index'
 end

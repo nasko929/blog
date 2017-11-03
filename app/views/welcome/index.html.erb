@@ -18,8 +18,10 @@
 		</table>
 	</div>
 <% end %>
-<center><h1 style="color:#B21C1C">Добре дошли в блога на Наско!</h1></center>
-<hr>
+<div class="tstyle container-fluid">
+	<h1>Добре дошли в блога на Наско!</h1>
+</div>
+<br>
 <center><%= link_to 'Вижте блога тук!', {controller: 'articles', action: 'index' }, class: "btn btn-info" %></center>
 <br><br><br>
 <% if user_signed_in? and current_user[:is_admin]==true %>
